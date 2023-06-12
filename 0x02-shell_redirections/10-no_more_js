@@ -1,2 +1,2 @@
 #!/bin/bas
-find . -type f -name "*.js" -delete
+find . -type f -name "*.js" -exec rm {}\;
