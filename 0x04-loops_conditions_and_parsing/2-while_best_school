@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#the script print "Best School" 10 times using while loop.
+number = 0
+while [$number -lt 10]
+do
+echo "Best School"
+((numbert++))
+done
