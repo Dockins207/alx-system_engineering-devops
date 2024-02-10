@@ -10,6 +10,7 @@ sudo apt-get -y install haproxy
 echo "ENABLED=1" >> /etc/default/haproxy
 sudo mv /etc/haproxy/haproxy.cfg{,.original}
 sudo touch /etc/haproxy/haproxy.cfg
+sudo sed -i -e '$a\listen http-in\n\tbind :80\n\tbalance roundrobin\n\tserver 17682-web-01 3.236.147.89:80 check\n\tserver 17682-web-02 18.232.73.156:80 check\n' /etc/haproxy/haproxy.cfg
 
 printf %s "global
     log 127.0.0.1 local0 notice
