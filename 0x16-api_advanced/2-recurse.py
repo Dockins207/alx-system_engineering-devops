@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Function to query a list of all hot posts on a given Reddit subreddit."""
 import requests
+
+
 def recurse(subreddit, hot_list=None, after="", count=0):
     """Returns a list of titles of all hot posts on a given subreddit."""
     if hot_list is None:
@@ -21,6 +23,6 @@ def recurse(subreddit, hot_list=None, after="", count=0):
         for post in results.get("children", []):
             hot_list.append(post.get("data", {}).get("title"))
 
-            if after is not None:
-                return recurse(subreddit, hot_list, after, count)
-            return hot_list
+        if after is not None:
+            return recurse(subreddit, hot_list, after, count)
+        return hot_list
