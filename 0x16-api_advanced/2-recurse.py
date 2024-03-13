@@ -9,12 +9,15 @@ def recurse(subreddit, hot_list=None, after="", count=0):
         hot_list = []
 
         url = f"https://www.reddit.com/r/{subreddit}/hot/.json"
-        headers = {"User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"}
+        headers = {"User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
+                }
         params = {"after": after, "count": count, "limit": 100}
 
-        response = requests.get(url, headers=headers, params=params, allow_redirects=False)
+        response = requests.get(url, headers=headers, params=params,
+                allow_redirects=False)
         if response.status_code != 200:
-            return None  # You might want to handle different status codes differently
+            return None
+        # You might want to handle different status codes differently
 
         results = response.json().get("data")
         after = results.get("after")
